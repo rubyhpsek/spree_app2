@@ -5,14 +5,14 @@
 #   gem 'sqlite3'
 #
 #*******************************
-# default: &default
-#   adapter: sqlite3
-#   pool: 5
-#   timeout: 5000
+  default: &default
+   adapter: sqlite3
+   pool: 5
+   timeout: 5000
 
-# development:
-#   <<: *default
-#   database: db/development.sqlite3
+  development:
+    <<: *default
+    database: db/development.sqlite3
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 # Warning: The database defined as "test" will be erased and
@@ -28,15 +28,18 @@
 #   <<: *default
 #   database: db/production.sqlite3
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-development:
-  adapter: postgresql
-  encoding: unicode
-  database: postgres
-  host: localhost
-  pool: 5
-  port: 5432
-  username: postgres
-  password: good888
+
+#*************************************
+# development:
+#   adapter: postgresql
+#   encoding: unicode
+#   database: postgres
+#   host: localhost
+#   pool: 5
+#   port: 5432
+#   username: postgres
+#   password: good888
+ #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 test:
   adapter: postgresql
