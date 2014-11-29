@@ -31,20 +31,30 @@
 development:
   adapter: postgresql
   encoding: unicode
-  database: spreecommercetest
+  database: postgres
+  host: localhost
   pool: 5
-  password:
+  port: 5432
+  username: postgres
+  password: good888
 
 test:
   adapter: postgresql
   encoding: unicode
-  database: spreecommercedev
+  database: postgres
+  host: localhost
   pool: 5
-  password:
+  port: 5432
+  username: postgres
+  password: good888
+
 
 production:
   adapter: postgresql
   encoding: unicode
-  database: spreecommerceprod
+  database: postgres
+  host: localhost
   pool: 5
-  password:  
+  port: 5432
+  username: postgres
+  password: good888
