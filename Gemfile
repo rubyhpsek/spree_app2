@@ -53,3 +53,6 @@ gem 'spree_bootstrap_frontend', github: '200Creative/spree_bootstrap_frontend', 
 
 gem 'pg', group: :production
 gem 'rails_12factor', group: :production
+
+
+gem 'unicorn'
