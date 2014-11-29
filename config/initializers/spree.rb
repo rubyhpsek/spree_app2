@@ -11,6 +11,15 @@ Spree.config do |config|
   # config.track_inventory_levels = false
    # config.admin_interface_logo = 'logo/spree_50.png.png'
    config.logo = 'store_logo1.png'
+   config.use_s3 = true
+   config.s3_bucket = ''
+   config.s3_access_key = ""
+   config.s3_secret = ""
+
+   # if you create your Amazon S3 bucket on Western Europe server, you need these two additional options:
+   # config.attachment_url = ":s3_eu_url"
+   # config.s3_host_alias = "s3-eu-west-1.amazonaws.com"
+end
 end
 
 Spree.user_class = "Spree::User"
