@@ -19,4 +19,4 @@
 #ignore .env files
 /*.env
 
-/config/database.yml
+/config/locales/database.yml
