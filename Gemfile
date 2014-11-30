@@ -7,7 +7,7 @@ ruby '1.9.3'
 gem 'rails', '4.1.8'
 # Use sqlite3 as the database for Active Record
 
-gem 'sqlite3', group: :development
+#gem 'sqlite3', group: :development
 
 
 # Use SCSS for stylesheets
@@ -51,7 +51,7 @@ gem 'spree_auth_devise', github: 'spree/spree_auth_devise', branch: '2-4-stable'
 gem 'spree_bootstrap_frontend', github: '200Creative/spree_bootstrap_frontend', branch: 'master'
 
 
-gem 'pg', group: :production
+gem 'pg'
 gem 'rails_12factor', group: :production
 
 

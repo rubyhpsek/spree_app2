@@ -18,3 +18,5 @@
 
 #ignore .env files
 /*.env
+
+/config/database.yml
