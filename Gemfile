@@ -1,6 +1,6 @@
 source 'https://rubygems.org'
-
-ruby '1.9.3'
+ruby '2.1.5'
+#ruby '1.9.3'
 
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
@@ -55,4 +55,7 @@ gem 'pg'
 gem 'rails_12factor', group: :production
 
 
-#gem 'unicorn'
+
+ platforms :ruby do # linux
+  gem 'unicorn'
+end
