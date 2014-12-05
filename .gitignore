@@ -20,3 +20,6 @@
 /*.env
 
 /config/locales/*.database.yml
+
+# Ignore application configuration
+/config/application.yml
