@@ -13,6 +13,10 @@ Spree.config do |config|
    config.logo = 'store_logo2.png'
 
 
+=begin
+config.attachment_url = ":s3_eu_url"
+  config.s3_host_alias = "s3-eu-west-1.amazonaws.com"
+
   if Rails.env.production? then
            #production. Store images on S3.
            # development will default to local storage
@@ -38,10 +42,13 @@ Spree.config do |config|
                Spree::Image.attachment_definitions[:attachment][key.to_sym] = value
           end
      end
-     config.attachment_url = ":s3_eu_url"
-  config.s3_host_alias = "s3-eu-west-1.amazonaws.com"
+
 end
+=end
+
+
 Spree.user_class = "Spree::User"
+end
 
 
 
