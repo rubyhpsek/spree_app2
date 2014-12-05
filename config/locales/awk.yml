@@ -19,11 +19,11 @@
           default_style: "product",
           }
 
-=begin
-attachment_config.each do |key, value|
-Spree::Image.attachment_definitions[:attachment][key.to_sym] = value
-end
-=end
+# =begin
+# attachment_config.each do |key, value|
+# Spree::Image.attachment_definitions[:attachment][key.to_sym] = value
+# end
+# =end
 
 
           Paperclip.interpolates(:s3_eu_url) do |attachment, style|
