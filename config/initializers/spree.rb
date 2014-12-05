@@ -38,15 +38,18 @@ Spree.config do |config|
           default_style: "product",
           }
 
-           attachment_config.each do |key, value|
-               Spree::Image.attachment_definitions[:attachment][key.to_sym] = value
-           end
+=begin
+attachment_config.each do |key, value|
+Spree::Image.attachment_definitions[:attachment][key.to_sym] = value
+end
+=end
 
-          # Paperclip.interpolates(:s3_eu_url) do |attachment, style|
-          # "#{attachment.s3_protocol}://#{Spree::Config[:s3_host_alias]}/#{attachment.bucket_name}/#{attachment.path(style).gsub(%r{^/}, "")}"
+
+          Paperclip.interpolates(:s3_eu_url) do |attachment, style|
+           "#{attachment.s3_protocol}://#{Spree::Config[:s3_host_alias]}/#{attachment.bucket_name}/#{attachment.path(style).gsub(%r{^/}, "")}"
         end
      end
-
+end
 
 
 
