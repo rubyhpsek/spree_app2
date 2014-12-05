@@ -33,6 +33,15 @@ Spree.config do |config|
           s3_headers:     { "Cache-Control" => "max-age=31557600" },
           s3_protocol:    "https",
           bucket:         ENV["S3_BUCKET"],
+          url:            ":s3_domain_url",
+
+          styles: {
+                    mini:     "48x48>",
+                    small:    "100x100>",
+                    product:  "240x240>",
+                    large:    "600x600>"
+           },
+
 
           path:          ":rails_root/public/:class/:attachment/:id/:style/:basename.:extension",
           default_url:   "/:class/:attachment/:id/:style/:basename.:extension",
@@ -42,7 +51,7 @@ Spree.config do |config|
          Paperclip.interpolates(:s3_eu_url) do |attachment, style|
         "#{attachment.s3_protocol}://#{Spree::Config[:s3_host_alias]}/#{attachment.bucket_name}/#{attachment.path(style).gsub(%r{^/},"")}"
 
-       
+
           end
     end
 end
