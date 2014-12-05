@@ -13,9 +13,9 @@ Spree.config do |config|
    config.logo = 'store_logo2.png'
 
 
-=begin
-config.attachment_url = ":s3_eu_url"
-  config.s3_host_alias = "s3-eu-west-1.amazonaws.com"
+
+# config.attachment_url = ":s3_eu_url"
+  # config.s3_host_alias = "s3-eu-west-1.amazonaws.com"
 
   if Rails.env.production? then
            #production. Store images on S3.
@@ -44,11 +44,11 @@ config.attachment_url = ":s3_eu_url"
      end
 
 end
-=end
+
 
 
 Spree.user_class = "Spree::User"
-end
+
 
 
 
