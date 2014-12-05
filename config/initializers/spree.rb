@@ -13,8 +13,7 @@ Spree.config do |config|
    config.logo = 'store_logo2.png'
 
 
-   #S3 configuration
-      if Rails.env.production? then
+  if Rails.env.production? then
            #production. Store images on S3.
            # development will default to local storage
           attachment_config = {
@@ -28,8 +27,6 @@ Spree.config do |config|
           storage:        :s3,
           s3_headers:     { "Cache-Control" => "max-age=31557600" },
           s3_protocol:    "https",
-          s3_host_name: 's3-eu-west-1.amazonaws.com',
-          s3_endpoint: 's3-eu-west-1.amazonaws.com',
           bucket:         ENV["S3_BUCKET"],
 
           path:          ":rails_root/public/:class/:attachment/:id/:style/:basename.:extension",
@@ -39,20 +36,11 @@ Spree.config do |config|
 
           attachment_config.each do |key, value|
                Spree::Image.attachment_definitions[:attachment][key.to_sym] = value
-
-               
           end
      end
-
-              
-
-              Paperclip.interpolates(:s3_eu_url) do |attachment, style|
-  "#{attachment.s3_protocol}://#{Spree::Config[:s3_host_alias]}/#{attachment.bucket_name}/#{attachment.path(style).gsub(%r{^/}, "")}"
-end
-config.attachment_url = ":s3_eu_url"
-              config.s3_host_alias = "s3-eu-west-1.amazonaws.com"
 end
 Spree.user_class = "Spree::User"
+
 
 
 
