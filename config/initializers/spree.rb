@@ -38,6 +38,8 @@ Spree.config do |config|
                Spree::Image.attachment_definitions[:attachment][key.to_sym] = value
           end
      end
+     config.attachment_url = ":s3_eu_url"
+  config.s3_host_alias = "s3-eu-west-1.amazonaws.com"
 end
 Spree.user_class = "Spree::User"
 
