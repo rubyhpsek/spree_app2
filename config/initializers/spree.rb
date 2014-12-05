@@ -28,6 +28,8 @@ Spree.config do |config|
           storage:        :s3,
           s3_headers:     { "Cache-Control" => "max-age=31557600" },
           s3_protocol:    "https",
+          s3_host_name: 's3-eu-west-1.amazonaws.com',
+          s3_endpoint: 's3-eu-west-1.amazonaws.com',
           bucket:         ENV["S3_BUCKET"],
 
           path:          ":rails_root/public/:class/:attachment/:id/:style/:basename.:extension",
