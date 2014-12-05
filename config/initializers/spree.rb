@@ -22,16 +22,16 @@ Spree.config do |config|
            # development will default to local storage
           attachment_config = {
           s3_credentials: {
-            access_key_id: ENV["S3_KEY"],
-            secret_access_key: ENV["S3_SECRET"],
-            bucket: ENV["S3_BUCKET"],
+            access_key_id: ENV["ACCESS_KEY_ID"],
+            secret_access_key: ENV["SECRET_ACCESS_KEY"],
+            bucket: ENV["BUCKET"],
           },
 
 
           storage:        :s3,
           s3_headers:     { "Cache-Control" => "max-age=31557600" },
           s3_protocol:    "https",
-          bucket:         ENV["S3_BUCKET"],
+          bucket:         ENV["BUCKET"],
 
           path:          ":rails_root/public/:class/:attachment/:id/:style/:basename.:extension",
           default_url:   "/:class/:attachment/:id/:style/:basename.:extension",
@@ -46,7 +46,7 @@ end
 
 
           Paperclip.interpolates(:s3_eu_url) do |attachment, style|
-           "#{attachment.s3_protocol}://#{Spree::Config[:s3_host_alias]}/#{attachment.bucket_name}/#{attachment.path(style).gsub(%r{^/}, "")}"
+           "#{attachment.s3_protocol}://#{Spree::Config[:s3_host_alias]}/#{attachment.bucket_name}/#{attachment.path(style).gsub(%r{^/},"")}"
         end
      end
 end
@@ -55,6 +55,7 @@ end
 
 
 Spree.user_class = "Spree::User"
+
 
 
 
