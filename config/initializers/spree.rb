@@ -13,35 +13,38 @@ Spree.config do |config|
    config.logo = 'store_logo2.png'
 
 
-   attachment_config = {
+   #S3 configuration
+      if Rails.env.production? then
+           #production. Store images on S3.
+           # development will default to local storage
+          attachment_config = {
+          s3_credentials: {
+            access_key_id: ENV["S3_KEY"],
+            secret_access_key: ENV["S3_SECRET"],
+            bucket: ENV["S3_BUCKET"],
+          },
 
-  s3_credentials: {
-    access_key_id:     ENV['AWS_ACCESS_KEY_ID'],
-    secret_access_key: ENV['AWS_SECRET_ACCESS_KEY'],
-    bucket:            ENV['S3_BUCKET_NAME']
-  },
 
-  storage:        :s3,
-  s3_headers:     { "Cache-Control" => "max-age=31557600" },
-  s3_protocol:    "https",
-  bucket:         ENV['S3_BUCKET_NAME'],
-  url:            ":s3_domain_url",
+          storage:        :s3,
+          s3_headers:     { "Cache-Control" => "max-age=31557600" },
+          s3_protocol:    "https",
+          bucket:         ENV["S3_BUCKET"],
 
-  styles: {
-      mini:     "48x48>",
-      small:    "100x100>",
-      product:  "240x240>",
-      large:    "600x600>"
-  },
+          path:          ":rails_root/public/:class/:attachment/:id/:style/:basename.:extension",
+          default_url:   "/:class/:attachment/:id/:style/:basename.:extension",
+          default_style: "product",
+          }
 
-  path:           "/spree/:class/:id/:style/:basename.:extension",
-  default_url:    "/spree/:class/:id/:style/:basename.:extension",
-  default_style:  "product"
-}
-
-attachment_config.each do |key, value|
-  Spree::Image.attachment_definitions[:attachment][key.to_sym] = value
+          attachment_config.each do |key, value|
+               Spree::Image.attachment_definitions[:attachment][key.to_sym] = value
+          end
+     end
 end
+Spree.user_class = "Spree::User"
+
+
+
+  
 
 
 =begin
@@ -51,17 +54,4 @@ end
    config.s3_secret = ""
 =end
    # if you create your Amazon S3 bucket on Western Europe server, you need these two additional options:
-    config.attachment_url = ":s3_eu_url"
-   config.s3_host_alias = "s3-eu-west-1.amazonaws.com"
-end
-
-=begin
-Paperclip.interpolates(:s3_eu_url) do |attachment, style|
-"#{attachment.s3_protocol}://#{Spree::Config[:s3_host_alias]}/#{attachment.bucket_name}/#{attachment.path(style).gsub(%r{^/},"")}"
-=end
-
-
-
-
-
-Spree.user_class = "Spree::User"
+    
