@@ -18,7 +18,7 @@ Spree.config do |config|
 
   
  #S3 configuration
-=begin
+
 if Rails.env.production? then
            #production. Store images on S3.
            # development will default to local storage
@@ -34,7 +34,7 @@ if Rails.env.production? then
           s3_headers:     { "Cache-Control" => "max-age=31557600" },
           s3_protocol:    "https",
           bucket:         ENV["S3_BUCKET"],
-          url:            ":s3_domain_url",
+          # url:            ":s3_domain_url",
 
           styles: {
                     mini:     "48x48>",
@@ -56,11 +56,11 @@ if Rails.env.production? then
           end
     end
 end
-=end
+
 
 Spree.user_class = "Spree::User"
 
-end
+
 
 
 
