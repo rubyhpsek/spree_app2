@@ -22,6 +22,7 @@ Spree.config do |config|
 if Rails.env.production? then
            #production. Store images on S3.
            # development will default to local storage
+
           attachment_config = {
           s3_credentials: {
             access_key_id: ENV["S3_KEY"],
@@ -49,14 +50,15 @@ if Rails.env.production? then
           default_style: "product",
           }
 
-         Paperclip.interpolates(:s3_eu_url) do |attachment, style|
-        "#{attachment.s3_protocol}://#{Spree::Config[:s3_host_alias]}/#{attachment.bucket_name}/#{attachment.path(style).gsub(%r{^/},"")}"
+         
 
 
           end
     end
-end
 
+        Paperclip.interpolates(:s3_eu_url) do |attachment, style|
+        "#{attachment.s3_protocol}://#{Spree::Config[:s3_host_alias]}/#{attachment.bucket_name}/#{attachment.path(style).gsub(%r{^/},"")}"
+        end
 
 Spree.user_class = "Spree::User"
 
