@@ -40,6 +40,13 @@ if Rails.env.production? then
           bucket:         ENV["S3_BUCKET"],
           # url:            ":s3_domain_url",
 
+           styles: {
+              mini:     "48x48>",
+              small:    "100x100>",
+              product:  "240x240>",
+              large:    "600x600>"
+         },
+
           
 
 
@@ -52,9 +59,13 @@ if Rails.env.production? then
 
 
           end
-    end
+    
 
+        Paperclip.interpolates(:s3_eu_url) do |attachment, style|
+        "#{attachment.s3_protocol}://#{Spree::Config[:s3_host_alias]}/#{attachment.bucket}/#{attachment.path(style).gsub(%r{^/},"")}"
+        end
 
+end
 =begin
  Paperclip.interpolates(:s3_eu_url) do |att, style|
     "#{att.s3_protocol}://s3-eu-west-1.amazonaws.com/#{att.bucket_name}/#{att.path(style)}"
@@ -72,9 +83,7 @@ end
 
 
 
-          Paperclip.interpolates(:s3_eu_url) do |attachment, style|
-        "#{attachment.s3_protocol}://#{Spree::Config[:s3_host_alias]}/#{attachment.bucket_name}/#{attachment.path(style).gsub(%r{^/},"")}"
-end
+          
 
 
 
