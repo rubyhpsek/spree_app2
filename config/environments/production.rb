@@ -78,7 +78,7 @@ Rails.application.configure do
 
   # config/environments/production.rb
 
-
+  AWS::S3::DEFAULT_HOST = "s3-eu-west-1.amazonaws.com" #if using eu buckets.
 
 
 

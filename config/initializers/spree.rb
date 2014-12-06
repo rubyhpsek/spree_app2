@@ -5,20 +5,70 @@
 #
 # In order to initialize a setting do:
 # config.setting_name = 'new value'
-Spree.config do |config|
+#Spree.config do |config|
   # Example:
   # Uncomment to stop tracking inventory levels in the application
   # config.track_inventory_levels = false
    # config.admin_interface_logo = 'logo/spree_50.png.png'
-   config.logo = 'store_logo2.png'
+ # config.logo = 'store_logo2.png'
+
+
+S3_CONFIG = YAML.load_file("#{Rails.root}/config/application.yml")[Rails.env]
+
+
+Spree.config do |config|
+
+  config.logo = 'store_logo2.png'
+  config.attachment_styles = ActiveSupport::JSON.encode({
+        "mini" => "100x100>",
+        "small" => "200x200>",
+        "medium" => "400x600>",
+        "product" => "400x600>",
+        "large" => "600x600>",
+        "xl" => "800x800>",
+        "xxl" => "1200x1200>",
+
+    })
+
+   #AWS S3
+  config.use_s3 = true
+  config.s3_bucket = S3_CONFIG['bucket']
+  config.s3_access_key = S3_CONFIG['access_key_id']
+  config.s3_secret = S3_CONFIG['secret_access_key']
+
+  config.attachment_url = ":s3_eu_west_1_url"
+  config.s3_host_alias = "s3-eu-west-1.amazonaws.com"
+
+end
+
+Paperclip.interpolates(:s3_us_west_2_url) do |attachment, style|
+  "#{attachment.s3_protocol}://#{Spree::Config[:s3_host_alias]}/#{attachment.bucket_name}/#{attachment.path(style).gsub(%r{^/}, "")}"
+end
+
+Spree.user_class = "Spree::User"
+
+
+
+
+
+
+
+
+
+
+
+
+
    
 
 
 
 
-  
+  ####################################################################
  #S3 configuration
 
+
+=begin
 if Rails.env.production? then
            #production. Store images on S3.
            # development will default to local storage
@@ -50,7 +100,7 @@ if Rails.env.production? then
           
 
 
-          path:          ":rails_root/public/spree/products/:id/:style/:basename.:extension",
+          path:          ":rails_root/public/:class/:attachment/:id/:style/:basename.:extension",
           default_url:   "/:class/:attachment/:id/:style/:basename.:extension",
           default_style: "product",
           }
@@ -61,34 +111,23 @@ if Rails.env.production? then
           end
     
 
-        Paperclip.interpolates(:s3_eu_url) do |attachment, style|
-        "#{attachment.s3_protocol}://#{Spree::Config[:s3_host_alias]}/#{attachment.bucket}/#{attachment.path(style).gsub(%r{^/},"")}"
-        end
+#Makes Paperclip use the correct URL for images
+Paperclip.interpolates(:s3_eu_url) { |attachment, style|
+  "#{attachment.s3_protocol}://s3-eu-west-1.amazonaws.com/#{attachment.bucket_name}/#{attachment.path(style).gsub(%r{^/}, "")}"
+}
+
+
 
 end
-=begin
- Paperclip.interpolates(:s3_eu_url) do |att, style|
-    "#{att.s3_protocol}://s3-eu-west-1.amazonaws.com/#{att.bucket_name}/#{att.path(style)}"
-    end
-=end
-
-
-=begin
-module AWS
-    module S3
-        DEFAULT_HOST = "s3-eu-west-1.amazonaws.com"
-    end
-end
-=end
-
-
-
           
 
 
 
 Spree.user_class = "Spree::User"
+=end
 
+
+#######################################################################################################################################
 
 
 
@@ -102,11 +141,3 @@ Spree.user_class = "Spree::User"
   
 
 
-=begin
- config.use_s3 = true
-   config.s3_bucket = ''
-   config.s3_access_key = ""
-   config.s3_secret = ""
-=end
-   # if you create your Amazon S3 bucket on Western Europe server, you need these two additional options:
-    
