@@ -53,9 +53,23 @@ if Rails.env.production? then
           end
     end
 
-        Paperclip.interpolates(:s3_eu_url) do |attachment, style|
+
+    Paperclip.interpolates(:s3_eu_url) do |att, style|
+    "#{att.s3_protocol}://s3-eu-west-1.amazonaws.com/#{att.bucket_name}/#{att.path(style)}"
+    end
+
+    module AWS
+    module S3
+        DEFAULT_HOST = "s3-eu-west-1.amazonaws.com"
+    end
+    end
+
+=begin
+ Paperclip.interpolates(:s3_eu_url) do |attachment, style|
         "#{attachment.s3_protocol}://#{Spree::Config[:s3_host_alias]}/#{attachment.bucket_name}/#{attachment.path(style).gsub(%r{^/},"")}"
         end
+=end
+
 
 Spree.user_class = "Spree::User"
 
