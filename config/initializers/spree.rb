@@ -11,9 +11,7 @@ Spree.config do |config|
   # config.track_inventory_levels = false
    # config.admin_interface_logo = 'logo/spree_50.png.png'
    config.logo = 'store_logo2.png'
-   config.attachment_url = ":s3_us_west-1_url"
-   config.s3_host_alias = "s3-eu-west-1.amazonaws.com"
-
+   
 
 
 
@@ -30,6 +28,7 @@ if Rails.env.production? then
             access_key_id: ENV["S3_KEY"],
             secret_access_key: ENV["S3_SECRET"],
             bucket: ENV["S3_BUCKET"],
+            s3_endpoint: ENV["S3_ENDPOINT"],
 
           },
 
