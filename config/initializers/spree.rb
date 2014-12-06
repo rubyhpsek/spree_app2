@@ -50,7 +50,7 @@ if Rails.env.production? then
           
 
 
-          path:          ":rails_root/public/:class/:attachment/:id/:style/:basename.:extension",
+          path:          ":rails_root/public/spree/products/:id/:style/:basename.:extension",
           default_url:   "/:class/:attachment/:id/:style/:basename.:extension",
           default_style: "product",
           }
