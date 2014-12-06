@@ -14,12 +14,12 @@
 
 
 
-S3_CONFIG = YAML.load_file(Rails.root.join("config/application.yml")[Rails.env]
- 
+S3_CONFIG = YAML.load_file(Rails.root.join("config/application.yml"))[Rails.env]
+
 
 Spree.config do |config|
 
-config.logo = 'store_logo2.png'
+  config.logo = 'store_logo2.png'
   config.attachment_styles = ActiveSupport::JSON.encode({
         "mini" => "100x100>",
         "small" => "200x200>",
@@ -46,18 +46,23 @@ Paperclip.interpolates(:s3_us_west_2_url) do |attachment, style|
   "#{attachment.s3_protocol}://#{Spree::Config[:s3_host_alias]}/#{attachment.bucket_name}/#{attachment.path(style).gsub(%r{^/}, "")}"
 end
 
-
-
 Spree.user_class = "Spree::User"
+
+
+
+
+
 
 
 
 
 ####################################################################
 
-=begin
-#S3 configuration
 
+ #S3 configuration
+
+
+=begin
 if Rails.env.production? then
            #production. Store images on S3.
            # development will default to local storage
@@ -112,9 +117,18 @@ end
 
 
 
-Spree.user_class = "Spree::User"=end
+Spree.user_class = "Spree::User"
 
-#######################################################################################################################################
+
+
+
+
+
+ #######################################################################################################################################
+
+
+
+
 
 
 
