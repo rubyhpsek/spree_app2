@@ -18,7 +18,8 @@ Spree.config do |config|
 
   
  #S3 configuration
-      if Rails.env.production? then
+=begin
+if Rails.env.production? then
            #production. Store images on S3.
            # development will default to local storage
           attachment_config = {
@@ -55,8 +56,12 @@ Spree.config do |config|
           end
     end
 end
+=end
 
 Spree.user_class = "Spree::User"
+
+end
+
 
 
 
