@@ -58,11 +58,14 @@ if Rails.env.production? then
     "#{att.s3_protocol}://s3-eu-west-1.amazonaws.com/#{att.bucket_name}/#{att.path(style)}"
     end
 
-    module AWS
+=begin
+module AWS
     module S3
         DEFAULT_HOST = "s3-eu-west-1.amazonaws.com"
     end
-    end
+end
+=end
+
 
 =begin
  Paperclip.interpolates(:s3_eu_url) do |attachment, style|
