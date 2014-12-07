@@ -28,7 +28,7 @@
 #   <<: *default
 #   database: db/production.sqlite3
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
+                            
 #*************************************
 # development:
 #   adapter: postgresql
@@ -39,28 +39,28 @@
 #   port: 5432
 #   username: postgres
 #   password: good888
- #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
  #*************************************
-  test:
-    adapter: postgresql
-    encoding: unicode
-    database: postgrestest
-    host: localhost
-    pool: 5
-    port: 5432
-    username: postgres
-    password: good888
+   test:
+     adapter: postgresql
+     encoding: unicode
+     database: postgrestest
+     host: localhost
+     pool: 5
+     port: 5432
+     username: postgres
+     password: good888
   #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
   #*************************************
    production:
-    adapter: postgresql
-    encoding: unicode
-    database: postgres
-    host: localhost
-    pool: 5
-    port: 5432
-    username: postgres
-    password: good888
+     adapter: postgresql
+     encoding: unicode
+     database: postgres
+     host: localhost
+     pool: 5
+     port: 5432
+     username: postgres
+     password: good888
   #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
