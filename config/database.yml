@@ -62,7 +62,7 @@
     adapter: postgresql
     encoding: unicode
     database: postgres
-    host: localhost
+    host: 127.0.0.1
     pool: 5
     port: 5432
     username: postgres
