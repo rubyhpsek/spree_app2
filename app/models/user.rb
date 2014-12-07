@@ -1,5 +1,5 @@
 class User < ActiveRecord::Base
-	 has_attached_file :photo, :styles => {
+	 has_attached_file  :image, :styles => {
         :thumb  => "100x100",
         :medium => "200x200",
         :large => "600x400"
@@ -9,6 +9,8 @@ class User < ActiveRecord::Base
      # if you're using Rails 3.x, please use #{Rails.root.to_s} instead of #{RAILS_ROOT}
      :path => "/:style/:id/:filename",
      :url  => ":s3_eu_url" # if you're using eu buckets, call it s3_eu_url
+
+     validates_attachment_content_type :image, :content_type => /\Aimage\/.*\Z/
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,

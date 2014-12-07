@@ -22,9 +22,10 @@ Spree.config do |config|
   config.logo = 'store_logo2.png'
   
 
-=begin
+
  #S3 configuration
-if Rails.env.production? then
+=begin
+=if Rails.env.production? then
            #production. Store images on S3.
            # development will default to local storage
 
@@ -64,26 +65,22 @@ if Rails.env.production? then
 
 
           end
-end=end
+end
 
 
 #Makes Paperclip use the correct URL for images
 
-=begin
-Paperclip.interpolates(:s3_eu_url)  do  |attachment, style|
-  "#{attachment.s3_protocol}://s3-eu-west-1.amazonaws.com/#{attachment.bucket_name}/#{attachment.path(style).gsub(%r{^/}, "")}"
+
+    Paperclip.interpolates(:s3_eu_url)  do  |attachment, style|
+     "#{attachment.s3_protocol}://s3-eu-west-1.amazonaws.com/#{attachment.bucket_name}/#{attachment.path(style).gsub(%r{^/}, "")}"
+    
+    end
 =end
-
-
 
 end
 
 
 
+
 Spree.user_class = 'Spree::User'
 
-=begin
- Rails.application.config.to_prepare do
-            require_dependency 'spree/authentication_helpers'
-          end
-=end
