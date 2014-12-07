@@ -22,6 +22,7 @@ Spree.config do |config|
   config.logo = 'store_logo2.png'
   
 
+=begin
  #S3 configuration
 if Rails.env.production? then
            #production. Store images on S3.
@@ -63,12 +64,15 @@ if Rails.env.production? then
 
 
           end
-end
+end=end
+
 
 #Makes Paperclip use the correct URL for images
 
+=begin
 Paperclip.interpolates(:s3_eu_url)  do  |attachment, style|
   "#{attachment.s3_protocol}://s3-eu-west-1.amazonaws.com/#{attachment.bucket_name}/#{attachment.path(style).gsub(%r{^/}, "")}"
+=end
 
 
 
