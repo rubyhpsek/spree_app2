@@ -58,7 +58,7 @@ gem 'spree_auth_devise', github: 'spree/spree_auth_devise', branch: '2-4-stable'
 gem 'spree_bootstrap_frontend', github: '200Creative/spree_bootstrap_frontend', branch: 'master'
 
 
-gem 'pg'
+gem 'pg', group: :production
 gem 'rails_12factor', group: :production
 
 

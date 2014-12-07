@@ -1,7 +1,7 @@
 class User < ActiveRecord::Base
 	has_attached_file :image,
      :storage => :s3,
-     :s3_credentials => "#{Rails.root.to_s}/config/s3.yml",
+     :s3_credentials => "#{RAILS_ROOT}/config/s3.yml",
      # if you're using Rails 3.x, please use #{Rails.root.to_s} instead of #{RAILS_ROOT}
      :path => "/:style/:id/:filename",
      :url  => ":s3_eu_url" # if you're using eu buckets, call it s3_eu_url

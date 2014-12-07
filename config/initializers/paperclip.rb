@@ -3,10 +3,3 @@ Paperclip.interpolates(:s3_eu_url) { |attachment, style|
 }
 
 
-=begin
-module AWS
-    module S3
-        DEFAULT_HOST = "s3-eu-west-1.amazonaws.com"
-    end
-end
-=end
