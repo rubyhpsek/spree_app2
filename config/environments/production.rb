@@ -76,10 +76,27 @@ Rails.application.configure do
   # Do not dump schema after migrations.
   config.active_record.dump_schema_after_migration = false
 
+
+   # Required for Devise. Remember to change localhost:3000 to actual application host
+  config.action_mailer.default_url_options = { :host => 'localhost:3000' }
+
+
+  
+
   # config/environments/production.rb
 
-  AWS::S3::DEFAULT_HOST = "s3-eu-west-1.amazonaws.com" #if using eu buckets.
+ AWS::S3::DEFAULT_HOST = "s3-eu-west-1.amazonaws.com" #if using eu buckets.
 
+ config.paperclip_defaults = {
+          :storage =&gt; :s3,
+          :s3_credentials =&gt; {
+            :bucket =&gt; ENV['AWS_BUCKET'],
+            :access_key_id =&gt; ENV['AWS_ACCESS_KEY_ID'],
+            :secret_access_key =&gt; ENV['AWS_SECRET_ACCESS_KEY']
+          },
+          :path =&gt; ":class/:id/:basename_:style.:extension",
+          :url =&gt; ":s3_eu_url"
+      }
 
 
 end
