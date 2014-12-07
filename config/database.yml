@@ -31,8 +31,8 @@
 
 #*************************************
 # development:
-#   adapter: postgresql
-#   encoding: unicode
+# adapter: postgresql
+#  encoding: unicode
 #   database: postgresdev
 #   host: localhost
 #   pool: 5
@@ -58,7 +58,7 @@
   #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
   #*************************************
-    production:
+  production:
     adapter: postgresql
     encoding: unicode
     database: postgres
