@@ -74,7 +74,7 @@ Rails.application.configure do
   config.log_formatter = ::Logger::Formatter.new
 
   # Do not dump schema after migrations.
- # config.active_record.dump_schema_after_migration = false
+  config.active_record.dump_schema_after_migration = false
 
 
    # Required for Devise. Remember to change localhost:3000 to actual application host
@@ -90,9 +90,9 @@ Rails.application.configure do
  config.paperclip_defaults = {
           :storage => :s3,
           :s3_credentials => {
-            :bucket => ENV['AWS_BUCKET'],
-            :access_key_id => ENV['AWS_ACCESS_KEY_ID'],
-            :secret_access_key => ENV['AWS_SECRET_ACCESS_KEY']
+            :bucket => ENV['S3_BUCKET'],
+            :access_key_id => ENV['S3_ACCESS_KEY_ID'],
+            :secret_access_key => ENV['S3_SECRET_ACCESS_KEY']
           },
           :path => ":class/:id/:basename_:style.:extension",
           :url => ":s3_eu_url"
