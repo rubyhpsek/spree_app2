@@ -42,15 +42,15 @@
  #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
  #*************************************
-  test:  
-    adapter: postgresql
-    encoding: unicode
-    database: postgrestest
-    host: localhost
-    pool: 5
-    port: 5432
-    username: postgres
-    password: good888
+  # test:  
+  #   adapter: postgresql
+  #   encoding: unicode
+  #   database: postgrestest
+  #   host: localhost
+  #   pool: 5
+  #   port: 5432
+  #   username: postgres
+  #   password: good888
 
 
 
