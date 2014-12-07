@@ -78,7 +78,7 @@ Rails.application.configure do
 
 
    # Required for Devise. Remember to change localhost:3000 to actual application host
-  config.action_mailer.default_url_options = { :PORT => '5000' }
+  config.action_mailer.default_url_options = { :HOST => 'https://spreeshop2014.herokuapp.com/' }
 
 
   
