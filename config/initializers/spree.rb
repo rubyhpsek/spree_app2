@@ -20,6 +20,9 @@
 Spree.config do |config|
 
   config.logo = 'store_logo2.png'
+
+   config.attachment_url = ":s3_eu_url"
+  config.s3_host_alias = "s3-eu-west-1.amazonaws.com"
   
 
 
