@@ -88,14 +88,14 @@ Rails.application.configure do
  AWS::S3::DEFAULT_HOST = "s3-eu-west-1.amazonaws.com" #if using eu buckets.
 
  config.paperclip_defaults = {
-          :storage =&gt; :s3,
-          :s3_credentials =&gt; {
-            :bucket =&gt; ENV['AWS_BUCKET'],
-            :access_key_id =&gt; ENV['AWS_ACCESS_KEY_ID'],
-            :secret_access_key =&gt; ENV['AWS_SECRET_ACCESS_KEY']
+          :storage =>; :s3,
+          :s3_credentials =>; {
+            :bucket =>; ENV['AWS_BUCKET'],
+            :access_key_id =>; ENV['AWS_ACCESS_KEY_ID'],
+            :secret_access_key =>; ENV['AWS_SECRET_ACCESS_KEY']
           },
-          :path =&gt; ":class/:id/:basename_:style.:extension",
-          :url =&gt; ":s3_eu_url"
+          :path =>; ":class/:id/:basename_:style.:extension",
+          :url =>; ":s3_eu_url"
       }
 
 
