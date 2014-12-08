@@ -21,7 +21,9 @@ Spree.config do |config|
 
   config.logo = 'store_logo2.png'
 
-  
+  # S3 upload path and url path configuration
+Spree::Image.attachment_definitions[:attachment][:path] = 'products/:id/:style/:basename.:extension'
+Spree::Image.attachment_definitions[:attachment][:url] = 'products/:id/:style/:basename.:extension'
 
 
  #S3 configuration
