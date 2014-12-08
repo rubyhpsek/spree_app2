@@ -84,6 +84,7 @@ Rails.application.configure do
   
 
   # config/environments/production.rb
+  AWS::S3::DEFAULT_HOST = "s3-eu-west-1.amazonaws.com"
 
  AWS::S3::DEFAULT_HOST = "s3-eu-west-1.amazonaws.com" #if using eu buckets.
  #AWS::S3::DEFAULT_HOST.replace "s3-eu-west-1.amazonaws.com"
@@ -96,7 +97,7 @@ Rails.application.configure do
             :secret_access_key => ENV['S3_SECRET']
           },
           :path => ":class/:id/:basename_:style.:extension",
-          :url => ":s3-eu-west-1_url"
+          :url => "s3-eu-west-1.amazonaws.com"
       }
 
 
