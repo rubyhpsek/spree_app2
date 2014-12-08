@@ -341,7 +341,6 @@ DEPENDENCIES
   figaro
   jbuilder (~> 2.0)
   jquery-rails
-  paperclip
   pg
   rails (= 4.1.8)
   rails_12factor
