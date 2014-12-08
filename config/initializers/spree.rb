@@ -71,16 +71,18 @@ Spree::Image.attachment_definitions[:attachment][:url] = 'products/:id/:style/:b
 end
 
 
-#Makes Paperclip use the correct URL for images
 
-
-    Paperclip.interpolates(:s3_eu_url)  do  |attachment, style|
-     "#{attachment.s3_protocol}://s3-eu-west-1.amazonaws.com/#{attachment.bucket_name}/#{attachment.path(style).gsub(%r{^/}, "")}"
-    
-    end
 =end
 
+#Makes Paperclip use the correct URL for images
+
 end
+Paperclip.interpolates(:s3_eu_url)  do  |attachment, style|
+"#{attachment.s3_protocol}://s3-eu-west-1.amazonaws.com/#{attachment.bucket_name}/#{attachment.path(style).gsub(%r{^/}, "")}"
+    
+end
+
+
 
 
 

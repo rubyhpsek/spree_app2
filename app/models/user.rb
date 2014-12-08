@@ -5,7 +5,7 @@ class User < ActiveRecord::Base
         :large => "600x400"
         },
      :storage => :s3,
-     s3_protocol:    "https",
+     s3_protocol: "https",
      :s3_credentials => "#{Rails.root}/config/s3.yml",
      # if you're using Rails 3.x, please use #{Rails.root.to_s} instead of #{RAILS_ROOT}
      :path => "/:style/:id/:filename",
